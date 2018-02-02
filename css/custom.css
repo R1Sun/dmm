@@ -36,17 +36,18 @@
 }
  .mapael .mapTooltip {
      position: absolute;
-     background-color: #474c4b;
-     moz-opacity: 0.70;
-     opacity: 0.70;
-     filter: alpha(opacity=70);
-     border-radius: 10px;
+     background-color: #fff;
      padding: 10px;
      z-index: 1000;
      max-width: 200px;
      display: none;
-     color: #fff;
+     font-weight: 100;
+     box-shadow: 0 0 5px;
 }
+ .mapael .mapTooltip span {
+    color: #000;
+    font-weight: 100 !important;
+ }
  .legend-container {
      margin-top: -451px !important;
      width: 260px;
