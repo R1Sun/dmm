@@ -490,10 +490,11 @@
   <script type="text/javascript">
     $(function() {
       $(document).tooltip();
-
-      $('.map').find('svg')[0].setAttribute("height", "500");
-      $('.map').find('svg')[0].setAttribute("preserveAspectRatio", "none");
-      $('.map').find('svg')[0].setAttribute("viewBox", "400 0 600 360");
+       if ($(window).width() >= 768) {
+          $('.map').find('svg')[0].setAttribute("height", "500");
+          $('.map').find('svg')[0].setAttribute("preserveAspectRatio", "none");
+          $('.map').find('svg')[0].setAttribute("viewBox", "400 0 600 360");
+        }
     });
   </script>
   <script>
@@ -504,8 +505,8 @@
         backgroundColor: ["rgba(0, 204, 204, 1)", "rgba(0, 204, 204, 0.5)"]
       }],
       labels: [
-        'Regular customers',
-        'Successful projects',
+        ['Regular', 'customers'],
+        ['Successful', 'projects']
       ]
     };
     var myPieChart = new Chart(ctx, {
@@ -516,9 +517,25 @@
           display: false
         },
         tooltips: {
+              callbacks: {
+            title: function(tooltipItem, data) {
+              return data['labels'][tooltipItem[0]['index']];
+            },
+            label: function(tooltipItem, data) {
+              return false;
+            }
+          },
           caretSize: 0,
           mode: 'single',
-          position: 'average'
+          position: 'average',
+          backgroundColor: '#FFF',
+          titleFontSize: 14,
+          titleFontColor: '#000',
+          titleFontStyle: 'normal',
+          bodyFontColor: '#000',
+          bodyFontSize: 14,
+          displayColors: false,
+          cornerRadius: 0
         }
         // layout: {
         //             padding: {
